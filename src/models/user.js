@@ -7,12 +7,13 @@ const UserSchema = new mongoose.Schema(
     Confirmation: { type: String, require: true },
     role: { type: Number, defult: 0 },
     thumbnail: String,
-
     toJSON: {
       virtuals: true,
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 UserSchema.virtual('thumbnail_url').get(function () {
   return `http://localhost:3000/uploads/${this.thumbnail}`;
